@@ -1,0 +1,43 @@
+def ask_question(question_data):
+    print(question_data["question"])
+    for option in question_data["options"]:
+        print(option)
+    
+    user_answer = input("Please enter the letter of your answer: ").upper()
+    return user_answer
+
+def check_answer(user_answer, correct_answer):
+    if user_answer == correct_answer:
+        print("Correct!\n")
+        return True
+    else:
+        print(f"Incorrect. The correct answer is {correct_answer}.\n")
+        return False
+
+def run_quiz(questions):
+    score = 0
+    for question_data in questions:
+        user_answer = ask_question(question_data)
+        if check_answer(user_answer, question_data["answer"]):
+            score += 1
+    print(f"Your final score is {score}/{len(questions)}.")
+
+if _name_ == "_main_":
+    questions = [
+        {
+            "question": "Who is the founder of Microsoft?",
+            "options": ["A. Steve Jobs", "B. Bill Gates", "C. Mark Zuckerberg", "D. Larry Page"],
+            "answer": "B"
+        },
+        {
+            "question": "PERL is a",
+            "options": ["A. Assembly Level Language", "B. Low-Level Language", "C. Intermediate Level Language", "D. High-Level Language"],
+            "answer": "D"
+        },
+        {
+            "question": "How many minutes are in a full week?",
+            "options": ["A. 10,080", "B. 8,640", "C. 9,600", "D. 7,200"],
+            "answer": "A"
+        }
+    ]
+    run_quiz(questions)
